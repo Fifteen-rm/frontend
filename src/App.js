@@ -1,53 +1,22 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import UserStore from './stores/UserStore';
-import LoginForm from './LoginForm';
-import InputField from './InputField';
-import SubmitButton from './SubmitButton';
-import './App.css';
+import React, { Component } from "react"
+import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom"
+import LoginForm from "./LoginForm"
+import PatientService from "./PatientService"
 
-
-class App extends React.Component {
-
-  async componentDidMount() {
-
-    try {
-      let res = await fetch('/isLoggedIn', { 
-        method: 'post',
-        headers: {
-          'Accpet': 'application/json',
-          'Content-type': 'application/json'
-        }
-      
-      });
-
-      let result = await res.json();
-
-      if (result && result.success) {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = true;
-        UserStore.username = result.username;
-      }
-
-      else {
-        UserStore.loading = false;
-        UserStore.isLoggedIn = false;
-      }
-    }
-
-    catch(e) {
-      UserStore.loading = false;
-      UserStore.isLoggedIn = false;
-    }
-  }
-
+class App extends Component {
   render() {
     return (
-      <div className="app">
-        안녕하세요!
-        </div>
-    )
-  }
+      <div>
+        <Router>
+          <Link to="/patientlogin">
+            <button>환자 로그인</button>
+          </Link>
+          <Route path="/patientlogin" component={LoginForm} />
+          <Route path="/patientservice" component={PatientService} />
+        </Router>
+      </div>
+    );
+  };
 }
 
 export default App;
