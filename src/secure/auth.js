@@ -1,5 +1,5 @@
 const users = [
-    { name: "1", idnumber: "111111-1111111" }
+    { name: "master", idnumber: "000000-0000000" }
 ]
 
 export function signIn({ name, idnumber }) {

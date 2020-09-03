@@ -14,7 +14,7 @@ function AuthRoute({ authenticated, component: Component, render, ...rest }) {
           )
         ) : (
           <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
+            to={{ pathname: "/patientlogin", state: { from: props.location } }}
           />
         )
       }

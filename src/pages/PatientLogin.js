@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { signIn } from 'secure/auth';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { styled } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Redirect } from "react-router-dom"
@@ -59,16 +58,14 @@ TextMaskCustom.propTypes = {
   inputRef: PropTypes.func.isRequired,
 };
 
-export default function CenteredGrid(location) {
+export default function PatientLogin(location) {
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [values, setValues] = useState({
     textmask: '      -       ',
   });
   const authenticated = user != null;
-
   const login = ({ name, idnumber }) => setUser(signIn({ name, idnumber}));
-  //const logout = () => setUser(null);
 
   const [name, setName] = useState("")
   const [idnumber, setIDNumber] = useState("")
@@ -98,7 +95,7 @@ export default function CenteredGrid(location) {
     window.open('https://www.daum.net', '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
   }
 
-  const { from } = location || { from: { pathname: "/patientservice" } }
+  //const { from } = location || { from: { pathname: "/patientservice" } }
   if (authenticated) return <Redirect to="/patientservice" />
 
   const handleChange = (event) => {
@@ -164,4 +161,3 @@ export default function CenteredGrid(location) {
     </div>
   );
 }
-
