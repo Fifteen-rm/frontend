@@ -14,6 +14,9 @@ const Header = () => (
             <li>
                 <Link to ={utils.DASHBOARD_EXAMPLE}>material dashboard example</Link >
             </li>
+            <li>
+                <Link to ={utils.VIDEO_CALL}>video call</Link >
+            </li>
     	</ul>
 	</div>
 )
