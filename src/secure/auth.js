@@ -1,4 +1,4 @@
-const users = [
+export const users = [
     { name: "master", idnumber: "000000-0000000" }
 ]
 

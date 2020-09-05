@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { signIn } from 'secure/auth';
+import { users } from 'secure/auth';
 
-import { makeStyles, styled } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom";
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PatientService() {
     const classes = useStyles();
     const [user, setUser] = useState(null);
+    const authenticated = user != null;
     const logout = () => setUser(null);
 
     const history = useHistory();
@@ -44,7 +45,7 @@ export default function PatientService() {
                     <Paper className={classes.paper}>환자 서비스</Paper>
                 </Grid>
                 <Grid item xs={6} textAlign="right">
-                    <Paper className={classes.loginstate}> {user}님 로그인됨　|　<a onClick={ logoutClick } color="blue">로그아웃</a> </Paper>
+                    <Paper className={classes.loginstate}> {users.name}님 로그인됨　|　<a onClick={logoutClick} color="blue">로그아웃</a> </Paper>
                 </Grid>
                 <Grid item xs={8} >
                     <Paper className={classes.paper} lineHeight={10}>
@@ -56,7 +57,7 @@ export default function PatientService() {
                                 <Grid item xs container direction="column" spacing={2}>
                                     <Grid item xs>
                                         <div>
-
+                                            환자서비스페이지메인
                                         </div>
                                     </Grid>
                                 </Grid>

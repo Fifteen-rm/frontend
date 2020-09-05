@@ -4,6 +4,7 @@ import { PatientLogin, PatientService } from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
 
 class App extends Component {
+
   render() {
     return (
       <div>
