@@ -13,7 +13,7 @@ class App extends Component {
           <Switch>
             <Route path="/patientlogin" component={PatientLogin} />
             <Route path="/patientservice" component={PatientService} />
-          </Switch>
+          </Switch>          
         </Router>
       </div>
     );

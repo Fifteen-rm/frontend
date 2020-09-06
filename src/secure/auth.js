@@ -1,5 +1,6 @@
-export const users = [
-    { name: "master", idnumber: "000000-0000000" }
+const users = [
+    { name: "master", idnumber: "000000-0000000" },
+    { name: "test", idnumber: "000000-0000000"},
 ]
 
 export function signIn({ name, idnumber }) {

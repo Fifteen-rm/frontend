@@ -65,7 +65,7 @@ export default function PatientLogin(location) {
     textmask: '      -       ',
   });
   const authenticated = user != null;
-  const login = ({ name, idnumber }) => setUser(signIn({ name, idnumber}));
+  const login = ({ name, idnumber }) => setUser(signIn({ name, idnumber }));
 
   const [name, setName] = useState("")
   const [idnumber, setIDNumber] = useState("")
@@ -87,7 +87,7 @@ export default function PatientLogin(location) {
     } catch (e) {
       alert("일치하는 정보가 없습니다. 다시 입력 해주세요.")
       setName("")
-      setIDNumber("      -       ")
+      setIDNumber("")
     }
   }
 
@@ -96,7 +96,7 @@ export default function PatientLogin(location) {
   }
 
   //const { from } = location || { from: { pathname: "/patientservice" } }
-  if (authenticated) return <Redirect to="/patientservice" />
+  if (authenticated) return <Redirect to={{pathname: '/patientservice', state:{user: user}}} />
 
   const handleChange = (event) => {
     setValues({
@@ -104,6 +104,12 @@ export default function PatientLogin(location) {
       [event.target.name]: event.target.value,
     });
   };
+
+  const appKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      loginClick();
+    }
+  }
 
   return (
     <div className={classes.root}>
@@ -143,6 +149,7 @@ export default function PatientLogin(location) {
                             name="textmask"
                             inputComponent={TextMaskCustom}
                             onChange={handleChange, ({ target: { value } }) => setIDNumber(value)}
+                            onKeyPress={appKeyPress}
                           />
                         </FormControl>
                       </div>
