@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
 import { PatientLogin, PatientService } from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
-
+import * as path from 'Utils/path';
 class App extends Component {
 
   render() {
@@ -11,8 +11,8 @@ class App extends Component {
         <Router>
           <Route exact path="/" component={ChoiceLoginType} />
           <Switch>
-            <Route path="/patientlogin" component={PatientLogin} />
-            <Route path="/patientservice" component={PatientService} />
+            <Route path={path.PATIENT_LOGIN} component={PatientLogin} />
+            <Route path={path.PATIENT_SERVICE} component={PatientService} />
           </Switch>          
         </Router>
       </div>

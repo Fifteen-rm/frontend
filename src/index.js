@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from 'shared/App';
 import * as serviceWorker from './serviceWorker';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -16,5 +15,5 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-export { default as PatientLogin } from './screens/PatientLogin';
-export { default as PatientService } from './screens/PatientService';
+export { default as PatientLogin } from './screens/Patient/PatientLogin';
+export { default as PatientService } from './screens/Patient/PatientService';

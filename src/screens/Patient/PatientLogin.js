@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { signIn } from 'components/auth';
-
+import * as path from 'Utils/path';
 import { makeStyles, styled } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -95,8 +95,7 @@ export default function PatientLogin(location) {
     window.open('https://www.daum.net', '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
   }
 
-  //const { from } = location || { from: { pathname: "/patientservice" } }
-  if (authenticated) return <Redirect to={{pathname: '/patientservice', state:{user: user}}} />
+  if (authenticated) return <Redirect to={{pathname: path.PATIENT_SERVICE, state:{user: user}}} />
 
   const handleChange = (event) => {
     setValues({

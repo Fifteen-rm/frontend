@@ -1,5 +1,6 @@
 import React from "react"
 import { Route, Redirect } from "react-router-dom"
+import * as path from 'Utils/path';
 
 function AuthRoute({ authenticated, component: Component, render, ...rest }) {
   return (
@@ -14,7 +15,7 @@ function AuthRoute({ authenticated, component: Component, render, ...rest }) {
           )
         ) : (
           <Redirect
-            to={{ pathname: "/patientlogin", state: { from: props.location } }}
+            to={{ pathname: path.PATIENT_LOGIN, state: { from: props.location } }}
           />
         )
       }
