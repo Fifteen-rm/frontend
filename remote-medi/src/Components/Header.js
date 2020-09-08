@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as utils from '../Utils/path'
 
 const Header = () => (
