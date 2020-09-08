@@ -36,8 +36,7 @@ export default function PatientService(props) {
         logout()
         history.push('/')
     }
-    console.log(props)
-    // 
+    //
     return (
         <div className={classes.root}>
             <Grid container spacing={0} justify="center" alignItems="center">
