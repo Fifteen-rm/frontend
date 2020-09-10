@@ -3,11 +3,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import MeetPlace from './MeetPlace';
 
-const WaitingRoom = (props) => {
+function WaitingRoom(props) {
   const [token, setToken] = useState(null);
   useEffect(() => {
       async function getToken() {
-        console.log('start')
         const {data} = await axios({
             method: 'post',
             url: api.WEB_RTC_TOKEN, 
@@ -37,4 +36,4 @@ const WaitingRoom = (props) => {
   return render;
 }
 
-export default WaitingRoom;
+export default WaitingRoom

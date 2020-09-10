@@ -1,10 +1,25 @@
 import React, { useState } from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from "react-router-dom";
 
+import * as path from 'Utils/path';
+import { Redirect } from "react-router-dom"
+import { v4 as uuidv4 } from 'uuid';
+
+import Button from '@material-ui/core/Button';
+const LoginButton = styled(Button)({
+    background: 'white',
+    color: 'skyblue',
+    variant: 'contained',
+    fontSize: 20,
+    tex: 10,
+    height: 45,
+    width: 135,
+    margin: 5,
+  });
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +51,13 @@ export default function PatientService(props) {
         logout()
         history.push('/')
     }
+
+    const enterMeet = () => {
+        return history.push(path.VIDEO_CALL, {
+            identity:uuidv4(),
+            room:'1234'
+        } )
+    }
     //
     return (
         <div className={classes.root}>
@@ -56,7 +78,7 @@ export default function PatientService(props) {
                                 <Grid item xs container direction="column" spacing={2}>
                                     <Grid item xs>
                                         <div>
-                                            환자서비스페이지메인
+                                        <LoginButton onClick={enterMeet} variant="outlined" color="primary">미팅입장</LoginButton>
                                         </div>
                                     </Grid>
                                 </Grid>

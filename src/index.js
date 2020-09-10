@@ -17,3 +17,4 @@ serviceWorker.unregister();
 
 export { default as PatientLogin } from './screens/Patient/PatientLogin';
 export { default as PatientService } from './screens/Patient/PatientService';
+export { default as WaitingRoom } from './screens/Meet/WaitingRoom';

@@ -92,7 +92,10 @@ export default function PatientLogin(location) {
   }
 
   const kakaoLoginClick = () => {
-    window.open('https://www.daum.net', '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
+    let kakao_url = process.env.NODE_ENV === 'prod'
+      ? process.env.HOST_URL
+      : "http://127.0.0.1:10637/authenticate/kakao/login/"
+    window.open(kakao_url, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
   }
 
   if (authenticated) return <Redirect to={{pathname: path.PATIENT_SERVICE, state:{user: user}}} />
