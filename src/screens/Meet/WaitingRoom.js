@@ -7,17 +7,18 @@ function WaitingRoom(props) {
   const [token, setToken] = useState(null);
   useEffect(() => {
       async function getToken() {
-        const {data} = await axios({
-            method: 'post',
-            url: api.WEB_RTC_TOKEN, 
-            data: {
+        const data = await fetch(api.WEB_RTC_TOKEN, {
+          method: 'POST',
+          body: JSON.stringify({
             identity: props.identity,
             room: props.room
-          },
+          }),
           headers: {
             'Content-Type': 'application/json'
-          }})
-          setToken(data.token);
+          }
+        }).then(res => res.json())
+        console.log(data)
+        setToken(data.token);
       }
       getToken();
       console.log('end')
