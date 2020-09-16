@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
-import { PatientLogin, PatientService } from '..';
+import { PatientLogin, PatientService, WaitingRoom} from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
 import * as path from 'Utils/path';
+import { v4 as uuidv4 } from 'uuid';
 class App extends Component {
 
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <Switch>
             <Route path={path.PATIENT_LOGIN} component={PatientLogin} />
             <Route path={path.PATIENT_SERVICE} component={PatientService} />
+            <Route path={path.VIDEO_CALL} render={(props) => <WaitingRoom identity={uuidv4()} room="1234"/>}/>
           </Switch>          
         </Router>
       </div>
