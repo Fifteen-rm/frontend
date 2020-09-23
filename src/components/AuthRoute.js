@@ -11,7 +11,7 @@ function AuthRoute({ authenticated, component: Component, render, ...rest }) {
           render ? (
             render(props)
           ) : (
-            <Component {...props} />
+            <Component {...rops} />
           )
         ) : (
           <Redirect
