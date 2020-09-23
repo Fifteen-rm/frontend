@@ -29,7 +29,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "server": "node-env-run server --exec nodemon | pino-colada",
-    "dev": "run-p server start"
+    "dev": "run-p server start",
+    "deploy": "run-p server prod"
   },
   "eslintConfig": {
     "extends": "react-app"
