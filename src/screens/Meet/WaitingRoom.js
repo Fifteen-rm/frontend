@@ -1,6 +1,5 @@
 import * as api from '../../Utils/api';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import MeetPlace from './MeetPlace';
 
 function WaitingRoom(props) {
