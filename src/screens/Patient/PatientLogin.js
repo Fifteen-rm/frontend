@@ -13,7 +13,7 @@ import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-
+import KaKaoLogin from 'react-kakao-login';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,7 +38,23 @@ const useStyles = makeStyles((theme) => ({
     margin: 5,
   },
 }));
-
+const KaKaoBtn = styled(KaKaoLogin)`
+    padding: 0;
+    width: 190px;
+    height: 44px;
+    line-height: 44px;
+    color: #783c00;
+    background-color: #FFEB00;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2)
+    }
+`
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
 
@@ -57,6 +73,7 @@ function TextMaskCustom(props) {
 TextMaskCustom.propTypes = {
   inputRef: PropTypes.func.isRequired,
 };
+
 
 export default function PatientLogin(location) {
   const classes = useStyles();
@@ -91,10 +108,23 @@ export default function PatientLogin(location) {
     }
   }
 
-  const kakaoLoginClick = () => {
-    console.log(process.env.REACT_APP_KAKAO_HOST_URL)
-    window.open(process.env.REACT_APP_KAKAO_HOST_URL, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
+  const responseKaKao = (res) => {
+    console.log(res)
   }
+
+  const responseFail = (err) => {
+    alert(JSON.stringify(err));
+  }
+
+  // const kakaoLoginClick = () => {
+  
+  //   var loginForm = window.open(loginPopup, "kakao_oauth", "width=800, height=600");
+  //   // loginForm.addEventListener("message", receiveMessage, false);
+  //   //process.env.REACT_APP_KAKAO_HOST_URL
+    
+  // };  
+
+
 
   if (authenticated) return <Redirect to={{ pathname: path.PATIENT_SERVICE, state: { user: user } }} />
 
@@ -156,7 +186,13 @@ export default function PatientLogin(location) {
                       <LoginButton onClick={loginClick} variant="outlined" color="primary">로그인</LoginButton>
                     </div>
                     <div>
-                      <img className={classes.kakao_login_button_img} onClick={kakaoLoginClick} src="/images/kakao_login_button.png" />
+                    <KaKaoBtn
+                        jsKey={process.env.REACT_APP_JSKEY}
+                        buttonText="KaKao"
+                        onSuccess={responseKaKao}
+                        onFailure={responseFail}
+                        getProfile={false}
+                    />
                     </div>
                   </Grid>
                 </Grid>
