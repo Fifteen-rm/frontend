@@ -56,7 +56,7 @@ export default function PatientDiagnosis() {
                                         <Grid container spacing={3} justify="center" alignItems="center">
                                             <Grid container item xs={12} spacing={4}>
                                                 <Grid item xs={4}>
-                                                    <Link to="/patient/diagnosis"><Paper className={classes.paper}>정형외과</Paper></Link>
+                                                    <Link to={path.VIDEO_CALL}><Paper className={classes.paper}>정형외과</Paper></Link>
                                                 </Grid>
                                                 <Grid item xs={4}>
                                                     <Paper className={classes.paper}>가정의학과</Paper>
