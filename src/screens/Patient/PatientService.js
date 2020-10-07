@@ -76,10 +76,10 @@ export default function PatientService(props) {
                                 <Grid item xs container direction="column" spacing={12}>
                                     <Grid container spacing={10} item xs={12} justify="center" alignItems="center">
                                         <Grid item xs={4}>
-                                        <Link to="/patient/diagnosis"><Paper className={classes.paper}>진료 하기</Paper></Link>
+                                        <Link to={path.PATIENT_DIAGNOSIS}><Paper className={classes.paper}>진료 하기</Paper></Link>
                                         </Grid>
                                         <Grid item xs={4}>
-                                        <Link to="/patient/records"><Paper className={classes.paper}>진료 내역 조회</Paper></Link>
+                                        <Link to={path.PATIENT_RECORDS}><Paper className={classes.paper}>진료 내역 조회</Paper></Link>
                                         </Grid>
                                     </Grid>
                                 </Grid>
