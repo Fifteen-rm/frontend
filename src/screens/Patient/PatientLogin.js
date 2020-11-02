@@ -14,6 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Box from '@material-ui/core/Box';
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
+import KaKaoLogin from 'react-kakao-login';
 const useStyles = makeStyles((theme) => ({
   box: {
     padding: 2,
@@ -24,7 +25,23 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2,
   },
 }));
-
+const KaKaoBtn = styled(KaKaoLogin)`
+    padding: 0;
+    width: 190px;
+    height: 44px;
+    line-height: 44px;
+    color: #783c00;
+    background-color: #FFEB00;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2)
+    }
+`
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
 
@@ -45,7 +62,7 @@ TextMaskCustom.propTypes = {
 };
 
 
-export default function PatientLogin(){
+export default function PatientLogin(location) {
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [values, setValues] = useState({
@@ -97,6 +114,23 @@ export default function PatientLogin(){
       : "http://127.0.0.1:10637/authenticate/kakao/login/"
     window.open(kakao_url, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
   };
+  const responseKaKao = (res) => {
+    console.log(res)
+  }
+
+  const responseFail = (err) => {
+    alert(JSON.stringify(err));
+  }
+
+  // const kakaoLoginClick = () => {
+  
+  //   var loginForm = window.open(loginPopup, "kakao_oauth", "width=800, height=600");
+  //   // loginForm.addEventListener("message", receiveMessage, false);
+  //   //process.env.REACT_APP_KAKAO_HOST_URL
+    
+  // };  
+
+
 
   if (authenticated) return <Redirect to={{ pathname: path.PATIENT_SERVICE, state: { user: user } }} />
 
