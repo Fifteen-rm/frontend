@@ -59,7 +59,7 @@ export default function PatientDiagnosis(props) {
                 <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">
                     <Box justifyContent="center">
                         <Box display="flex" paddingX={3}>
-                            <Box className={classes.text} padding={3} margin={3} width={2/9} border={1} borderColor='rgb(68, 114, 195)'>안과</Box>
+                            <Link to={path.VIDEO_CALL} ><Box className={classes.text} padding={3} margin={3} width={2/9} border={1} borderColor='rgb(68, 114, 195)'>안과</Box></Link>
                             <Box className={classes.text} padding={3} margin={3} width={2/9} border={1} borderColor='rgb(68, 114, 195)'>안과</Box>
                             <Box className={classes.text} padding={3} margin={3} width={2/9} border={1} borderColor='rgb(68, 114, 195)'>안과</Box>
                         </Box>
