@@ -1,10 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, Component } from "react"
 import { signIn } from 'components/auth';
 import * as path from 'Utils/path';
 
 import { makeStyles, styled } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Redirect } from "react-router-dom"
@@ -13,29 +11,17 @@ import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import Box from '@material-ui/core/Box';
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 
 const useStyles = makeStyles((theme) => ({
+  box: {
+    padding: 2,
+    textAlign: 'center',
+  },
   root: {
     flexGrow: 1,
     lineHeight: 2,
-    margin: 10,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    margin: 'auto',
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-    padding: '20px 50px',
-  },
-  kakao_login_button_img: {
-    height: 45,
-    width: 135,
-    margin: 5,
   },
 }));
 
@@ -58,7 +44,8 @@ TextMaskCustom.propTypes = {
   inputRef: PropTypes.func.isRequired,
 };
 
-export default function PatientLogin(location) {
+
+export default function PatientLogin(){
   const classes = useStyles();
   const [user, setUser] = useState(null);
   const [values, setValues] = useState({
@@ -70,14 +57,16 @@ export default function PatientLogin(location) {
   const [name, setName] = useState("")
   const [idnumber, setIDNumber] = useState("")
 
+  window.sessionStorage.setItem('name', name);
+
   const LoginButton = styled(Button)({
-    background: 'white',
-    color: 'skyblue',
+    background: 'rgb(68, 114, 196)',
+    color: 'white',
     variant: 'contained',
-    fontSize: 20,
+    fontSize: '1.2rem',
     tex: 10,
     height: 45,
-    width: 135,
+    width: 200,
     margin: 5,
   });
 
@@ -91,12 +80,23 @@ export default function PatientLogin(location) {
     }
   }
 
+  const KakaoLoginButton = styled(Button) ({
+    background: 'rgb(254, 229, 0)',
+    color: 'black',
+    variant: 'contained',
+    fontSize: '1.2rem',
+    tex: 10,
+    height: 45,
+    width: 200,
+    margin: 5,
+  });
+
   const kakaoLoginClick = () => {
     let kakao_url = process.env.NODE_ENV === 'prod'
       ? process.env.HOST_URL
       : "http://127.0.0.1:10637/authenticate/kakao/login/"
     window.open(kakao_url, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
-  }
+  };
 
   if (authenticated) return <Redirect to={{ pathname: path.PATIENT_SERVICE, state: { user: user } }} />
 
@@ -114,59 +114,50 @@ export default function PatientLogin(location) {
   }
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={0} justify="center" alignItems="center">
-        <Grid item xs={2} >
-          <Paper className={classes.paper}>환자 로그인</Paper>
-        </Grid>
-        <Grid item xs={6} textAlign="right">
-          <Paper className={classes.paper}>　</Paper>
-        </Grid>
-        <Grid item xs={8} >
-          <Paper className={classes.paper} lineHeight={10}>
-            <Grid container spacing={2}>
-              <Grid item>
-                <img className={classes.img} src="/images/patient_login_logo.png" />
-              </Grid>
-              <Grid item xs={12} sm container>
-                <Grid item xs container direction="column" spacing={2}>
-                  <Grid item xs>
-                    <div>
-                      <TextField
-                        margin="dense"
-                        value={name}
-                        onChange={({ target: { value } }) => setName(value)}
-                        type="text"
-                        label="이름"
-                      //defaultValue="" 기본 입력된 텍스트
-                      //helperText="" 도움말
-                      />
-                    </div>
-                    <div textAlign="center">
-                      <div className={classes.root}>
-                        <FormControl>
-                          <InputLabel htmlFor="formatted-text-mask-input">주민등록번호</InputLabel>
-                          <Input
-                            value={idnumber}
-                            name="textmask"
-                            inputComponent={TextMaskCustom}
-                            onChange={handleChange, ({ target: { value } }) => setIDNumber(value)}
-                            onKeyPress={appKeyPress}
-                          />
-                        </FormControl>
-                      </div>
-                      <LoginButton onClick={loginClick} variant="outlined" color="primary">로그인</LoginButton>
-                    </div>
-                    <div>
-                      <img className={classes.kakao_login_button_img} onClick={kakaoLoginClick} src="/images/kakao_login_button.png" />
-                    </div>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-      </Grid>
-    </div>
+    <Box padding={15} width="1200px" alignContent="center">
+      <Box className={classes.root} display="flex" justifyContent="center">
+        <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
+          환자 로그인
+        </Box>
+        <Box width={6 / 10}>
+          {/*로그인 상태*/}
+        </Box>
+      </Box>
+
+      <Box className={classes.root} display="flex" justifyContent="center">
+        <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
+          <Box width={5 / 10} paddingLeft={10} paddingY={5}>
+            <img src="/images/patientlogin.png" width='80%' />
+          </Box>
+          <Box width={5 / 10} textAlign="center" padding={5}b order={1} borderColor="black" marginLeft={5} marginRight={10}>
+            <Box padding={1}>
+              <TextField
+                margin="dense"
+                value={name}
+                onChange={({ target: { value } }) => setName(value)}
+                type="text"
+                label="이름"
+              />
+              </Box>
+              <Box padding={1}>
+              <FormControl>
+                <InputLabel htmlFor="formatted-text-mask-input">주민등록번호</InputLabel>
+                <Input
+                  value={idnumber}
+                  name="textmask"
+                  inputComponent={TextMaskCustom}
+                  onChange={handleChange, ({ target: { value } }) => setIDNumber(value)}
+                  onKeyPress={appKeyPress}
+                />
+              </FormControl>
+              </Box>
+              <Box padding={1}>
+              <LoginButton onClick={loginClick}>로그인</LoginButton>
+              <KakaoLoginButton onClick={kakaoLoginClick} startIcon={<ChatBubbleIcon/>} >카카오톡 로그인</KakaoLoginButton>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

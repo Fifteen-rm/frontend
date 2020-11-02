@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import * as path from 'Utils/path';
-
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -25,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function PatientRecords() {
+export default function PatientRecords(props) {
 
     const classes = useStyles();
     const [user, setUser] = useState(null);
@@ -45,7 +43,7 @@ export default function PatientRecords() {
                     <Paper className={classes.paper}>진료 내역</Paper>
                 </Grid>
                 <Grid item xs={6} textAlign="right">
-                    <Paper className={classes.loginstate}> !!님 로그인됨　|　<a onClick={logoutClick} color="blue">로그아웃</a> </Paper>
+                    <Paper className={classes.loginstate}> {}님 로그인됨　|　<a onClick={logoutClick} color="blue">로그아웃</a> </Paper>
                 </Grid>
                 <Grid item xs={8} >
                     <Paper className={classes.paper} lineHeight={10}>

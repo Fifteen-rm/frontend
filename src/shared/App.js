@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
-import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis} from '..';
+import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis, PatientRecords} from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
 import * as path from 'Utils/path';
 import { v4 as uuidv4 } from 'uuid';
