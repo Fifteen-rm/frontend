@@ -44,9 +44,11 @@ export default function PatientDiagnosis(props) {
         history.push('/')
     }
 
-    const part = "";
+    const [part, setPart] = useState("");
+    const select0 = () => { setPart("정형외과"); }
 
     window.sessionStorage.setItem('part', part);
+    
 
     return (
         <Box align="center" onDragStart="false">
@@ -65,7 +67,7 @@ export default function PatientDiagnosis(props) {
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
                                 <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }} >
-                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" part="정형외과">정형외과</Box>
+                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" onClick={select0}>정형외과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
                                 <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}
