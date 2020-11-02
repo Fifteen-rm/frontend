@@ -44,27 +44,30 @@ export default function PatientService(props) {
         })
     }
 
-   const name = window.sessionStorage.getItem('name');
+    const name = window.sessionStorage.getItem('name');
 
     return (
-        <Box padding={15}>
-            <Box className={classes.root} display="flex" justifyContent="center">
-                <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
-                    환자 서비스
+        <Box align="center">
+            <Box padding={15} width="1200px">
+                <Box className={classes.root} display="flex" justifyContent="center">
+                    <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
+                        환자 서비스
                 </Box>
-                <Box width={6 / 10} className={classes.loginstate}>
-                    {name}님 로그인됨　|　<Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                    <Box width={6 / 10} className={classes.loginstate}>
+                        {name}님 로그인됨　|　<Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                    </Box>
                 </Box>
-            </Box>
 
-            <Box className={classes.root} display="flex" justifyContent="center">
-                <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
-                    <Box display="flex" justifyContent="center">
-                        <Box border={2} borderColor="rgb(68, 114, 196)">
-                            <Link to="/patient/diagnosis">진료 하기</Link>
-                        </Box>
-                        <Box border={2} borderColor="rgb(68, 114, 196)">
-                            <Link to="/patient/records">진료 내역 조회</Link>
+                <Box className={classes.root} display="flex" justifyContent="center">
+                    <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
+                        <Box display="flex" justifyContent="center" width="100%" paddingY={6}>
+                            <Link to={path.PATIENT_DIAGNOSIS} style={{ textDecoration: 'none' }}>
+                                <Box border={2} fontSize="1.5rem" width={200} height={200} padding={3} bgcolor="rgb(68, 114, 196)" color="white" lineHeight="200px">진료 하기</Box>
+                            </Link>
+                            <Box marginX={6}></Box>
+                            <Link to={path.PATIENT_RECORDS} style={{ textDecoration: 'none' }}>
+                                <Box border={2} fontSize="1.5rem" width={200} height={200} padding={3} bgcolor="rgb(68, 114, 196)" color="white" lineHeight="200px">진료 내역 조회</Box>
+                            </Link>
                         </Box>
                     </Box>
                 </Box>

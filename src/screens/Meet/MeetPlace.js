@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Video from 'twilio-video';
 import Participant from './Participant';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MeetPlace = ({ roomName, token}) => {
+  const part = window.sessionStorage.getItem('part');
+
   const classes = useStyles();
   const [room, setRoom] = useState(null);
   const [participants, setParticipants] = useState([]);
@@ -61,6 +63,7 @@ const MeetPlace = ({ roomName, token}) => {
   ));
 
   return (
+    <Box>
     <div className={classes.root}>
     <h2>Room: {roomName}</h2>
      <Grid container spacing={3}>
@@ -80,11 +83,13 @@ const MeetPlace = ({ roomName, token}) => {
       </div>
       </Grid>
       <Grid item xs>
-      <h3>정형외과 전문의 김덕배</h3>
+      
+        <h3>{part} 전문의 김덕배</h3>
       <div className="remote-participants">{remoteParticipants}</div>
       </Grid>
       </Grid>
     </div>
+    </Box>
   );
 };
 

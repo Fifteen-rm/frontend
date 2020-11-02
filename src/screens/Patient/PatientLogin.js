@@ -97,7 +97,7 @@ export default function PatientLogin(location) {
     }
   }
 
-  const KakaoLoginButton = styled(Button) ({
+  const KakaoLoginButton = styled(Button)({
     background: 'rgb(254, 229, 0)',
     color: 'black',
     variant: 'contained',
@@ -123,11 +123,11 @@ export default function PatientLogin(location) {
   }
 
   // const kakaoLoginClick = () => {
-  
+
   //   var loginForm = window.open(loginPopup, "kakao_oauth", "width=800, height=600");
   //   // loginForm.addEventListener("message", receiveMessage, false);
   //   //process.env.REACT_APP_KAKAO_HOST_URL
-    
+
   // };  
 
 
@@ -148,46 +148,48 @@ export default function PatientLogin(location) {
   }
 
   return (
-    <Box padding={15} width="1200px" alignContent="center">
-      <Box className={classes.root} display="flex" justifyContent="center">
-        <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
-          환자 로그인
+    <Box align="center">
+      <Box padding={15} width="1200px">
+        <Box className={classes.root} display="flex" justifyContent="center">
+          <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
+            환자 로그인
         </Box>
-        <Box width={6 / 10}>
-          {/*로그인 상태*/}
-        </Box>
-      </Box>
-
-      <Box className={classes.root} display="flex" justifyContent="center">
-        <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
-          <Box width={5 / 10} paddingLeft={10} paddingY={5}>
-            <img src="/images/patientlogin.png" width='80%' />
+          <Box width={6 / 10}>
+            {/*로그인 상태*/}
           </Box>
-          <Box width={5 / 10} textAlign="center" padding={5}b order={1} borderColor="black" marginLeft={5} marginRight={10}>
-            <Box padding={1}>
-              <TextField
-                margin="dense"
-                value={name}
-                onChange={({ target: { value } }) => setName(value)}
-                type="text"
-                label="이름"
-              />
-              </Box>
+        </Box>
+
+        <Box className={classes.root} display="flex" justifyContent="center">
+          <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
+            <Box width={5 / 10} paddingLeft={10} paddingY={5}>
+              <img src="/images/patientlogin.png" width='80%' />
+            </Box>
+            <Box width={5 / 10} textAlign="center" padding={5} b order={1} borderColor="black" marginLeft={5} marginRight={10}>
               <Box padding={1}>
-              <FormControl>
-                <InputLabel htmlFor="formatted-text-mask-input">주민등록번호</InputLabel>
-                <Input
-                  value={idnumber}
-                  name="textmask"
-                  inputComponent={TextMaskCustom}
-                  onChange={handleChange, ({ target: { value } }) => setIDNumber(value)}
-                  onKeyPress={appKeyPress}
+                <TextField
+                  margin="dense"
+                  value={name}
+                  onChange={({ target: { value } }) => setName(value)}
+                  type="text"
+                  label="이름"
                 />
-              </FormControl>
               </Box>
               <Box padding={1}>
-              <LoginButton onClick={loginClick}>로그인</LoginButton>
-              <KakaoLoginButton onClick={kakaoLoginClick} startIcon={<ChatBubbleIcon/>} >카카오톡 로그인</KakaoLoginButton>
+                <FormControl>
+                  <InputLabel htmlFor="formatted-text-mask-input">주민등록번호</InputLabel>
+                  <Input
+                    value={idnumber}
+                    name="textmask"
+                    inputComponent={TextMaskCustom}
+                    onChange={handleChange, ({ target: { value } }) => setIDNumber(value)}
+                    onKeyPress={appKeyPress}
+                  />
+                </FormControl>
+              </Box>
+              <Box padding={1}>
+                <LoginButton onClick={loginClick}>로그인</LoginButton>
+                <KakaoLoginButton onClick={kakaoLoginClick} startIcon={<ChatBubbleIcon />} >카카오톡 로그인</KakaoLoginButton>
+              </Box>
             </Box>
           </Box>
         </Box>
