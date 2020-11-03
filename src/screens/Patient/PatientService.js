@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
 const diagnosis = [
     {
         url: '../images/diagnosis_.png',
@@ -39,9 +38,11 @@ const useStyles = makeStyles((theme) => ({
     },
     loginstate: {
         textAlign: 'right',
+        fontSize: '1.2rem',
     },
     logoutbutton: {
         '& > *': {
+            fontSize: '1.2rem',
         },
     },
     btnroot: {
@@ -142,7 +143,7 @@ export default function PatientService(props) {
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>환자 서비스</Box>
                     <Box width={6 / 10} className={classes.loginstate}>
-                        {name}님 로그인됨　|　<Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                        {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick}>로그아웃</Button>
                     </Box>
                 </Box>
                 <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">

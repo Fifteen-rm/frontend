@@ -6,6 +6,9 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button'
 import { useHistory, Link } from "react-router-dom";
 
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import HomeIcon from '@material-ui/icons/Home';
+
 const useStyles = makeStyles((theme) => ({
     box: {
         padding: 2,
@@ -17,9 +20,17 @@ const useStyles = makeStyles((theme) => ({
     },
     loginstate: {
         textAlign: 'right',
+        fontSize: '1.2rem',
     },
     logoutbutton: {
         '& > *': {
+            fontSize: '1.2rem',
+        },
+    },
+    remotePage: {
+        '& > *': {
+            color: "rgb(68, 114, 196)",
+            fontSize: '1.2rem',
         },
     },
     text: {
@@ -44,8 +55,18 @@ export default function PatientDiagnosis(props) {
         history.push('/')
     }
 
+    const goBackButton = () => {
+        history.goBack()
+    }
+
+    const goHomeButton = () => {
+        history.push('/patient/service')
+    }
+
     const [part, setPart] = useState("");
-    const select0 = () => { setPart("정형외과"); }
+    const select0 = () => {
+        setPart('정형외과');
+    }
 
     window.sessionStorage.setItem('part', part);
     
@@ -57,8 +78,12 @@ export default function PatientDiagnosis(props) {
                     <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
                         진료과 선택
                 </Box>
-                    <Box width={6 / 10} className={classes.loginstate}>
-                        {name}님 로그인됨　|　<Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                <Box width={2 / 10} borderColor="rgb(68, 114, 196)" borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
+                        <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
+                        <Button className={classes.remotePage} onClick={goHomeButton}><HomeIcon />홈으로</Button>
+                    </Box>
+                    <Box width={4 / 10} className={classes.loginstate}>
+                        {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
                     </Box>
                 </Box>
 
@@ -66,7 +91,7 @@ export default function PatientDiagnosis(props) {
                     <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }} >
+                                <Link to={path.PATIENT_DIAGNOSISROOM} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" onClick={select0}>정형외과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>

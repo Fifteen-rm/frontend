@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
-import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis, PatientRecords} from '..';
+import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis, PatientRecords, PatientDiagnosisRoom } from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
 import * as path from 'Utils/path';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,6 +17,7 @@ class App extends Component {
             <Route path={path.VIDEO_CALL} render={(props) => <WaitingRoom identity={uuidv4()} room="1234"/>}/>
             <Route path={path.PATIENT_DIAGNOSIS} component={PatientDiagnosis} />
             <Route path={path.PATIENT_RECORDS} component={PatientRecords} />
+            <Route path={path.PATIENT_DIAGNOSISROOM} component={PatientDiagnosisRoom} />
           </Switch>          
         </Router>
       </div>
