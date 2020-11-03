@@ -103,73 +103,79 @@ export default function ChoiceLoginType() {
     return (
         <div align="center">
             <Box className={classes.root} padding={10}>
-            <Box padding={5} fontSize='2rem'>원격 진료 서비스에 오신 것을 환영합니다.</Box>
-                {image_patient.map((image) => (
-                    <Link to={path.PATIENT_LOGIN}>
-                        <ButtonBase
-                            focusRipple
-                            key={image.title}
-                            className={classes.image}
-                            focusVisibleClassName={classes.focusVisible}
-                            style={{
-                                width: image.width,
-                            }}
-                        >
-                            <span
-                                className={classes.imageSrc}
-                                style={{
-                                    backgroundImage: `url(${image.url})`,
-                                }}
-                            />
-                            <span className={classes.imageBackdrop} />
-                            <span className={classes.imageButton}>
-                                <Typography
-                                    component="span"
-                                    variant="subtitle1"
-                                    color="inherit"
-                                    className={classes.imageTitle}
+                <Box padding={5} fontSize='2rem'>원격 진료 서비스에 오신 것을 환영합니다.</Box>
+                <Box display="flex" justifyContent="center">
+                    <Box border={5} borderColor="rgb(68, 114, 196)" margin={3}>
+                        {image_patient.map((image) => (
+                            <Link to={path.PATIENT_LOGIN}>
+                                <ButtonBase
+                                    focusRipple
+                                    key={image.title}
+                                    className={classes.image}
+                                    focusVisibleClassName={classes.focusVisible}
+                                    style={{
+                                        width: image.width,
+                                    }}
                                 >
-                                    {image.title}
-                                    <span className={classes.imageMarked} />
-                                </Typography>
-                            </span>
-                        </ButtonBase>
-                    </Link>
-                ))}
+                                    <span
+                                        className={classes.imageSrc}
+                                        style={{
+                                            backgroundImage: `url(${image.url})`,
+                                        }}
+                                    />
+                                    <span className={classes.imageBackdrop} />
+                                    <span className={classes.imageButton}>
+                                        <Typography
+                                            component="span"
+                                            variant="subtitle1"
+                                            color="inherit"
+                                            className={classes.imageTitle}
+                                        >
+                                            {image.title}
+                                            <span className={classes.imageMarked} />
+                                        </Typography>
+                                    </span>
+                                </ButtonBase>
+                            </Link>
+                        ))}
+                    </Box>
 
-                {image_doctor.map((image) => (
-                    <Link to={path.DOCTOR_LOGIN}>
-                        <ButtonBase
-                            focusRipple
-                            key={image.title}
-                            className={classes.image}
-                            focusVisibleClassName={classes.focusVisible}
-                            style={{
-                                width: image.width,
-                            }}
-                        >
-                            <span
-                                className={classes.imageSrc}
+                    <Box border={5} borderColor="rgb(112, 173, 71)" margin={3}>
+                    {image_doctor.map((image) => (
+                        <Link to={path.DOCTOR_LOGIN}>
+                            <ButtonBase
+                                focusRipple
+                                key={image.title}
+                                className={classes.image}
+                                focusVisibleClassName={classes.focusVisible}
                                 style={{
-                                    backgroundImage: `url(${image.url})`,
+                                    width: image.width,
                                 }}
-                            />
-                            <span className={classes.imageBackdrop} />
-                            <span className={classes.imageButton}>
-                                <Typography
-                                    component="span"
-                                    variant="subtitle1"
-                                    color="inherit"
-                                    className={classes.imageTitle}
-                                >
-                                    {image.title}
-                                    <span className={classes.imageMarked} />
-                                </Typography>
-                            </span>
-                        </ButtonBase>
-                    </Link>
-                ))}
+                            >
+                                <span
+                                    className={classes.imageSrc}
+                                    style={{
+                                        backgroundImage: `url(${image.url})`,
+                                    }}
+                                />
+                                <span className={classes.imageBackdrop} />
+                                <span className={classes.imageButton}>
+                                    <Typography
+                                        component="span"
+                                        variant="subtitle1"
+                                        color="inherit"
+                                        className={classes.imageTitle}
+                                    >
+                                        {image.title}
+                                        <span className={classes.imageMarked} />
+                                    </Typography>
+                                </span>
+                            </ButtonBase>
+                        </Link>
+                    ))}
+                </Box>
             </Box>
-        </div>
+            </Box>
+        </div >
     );
 }
