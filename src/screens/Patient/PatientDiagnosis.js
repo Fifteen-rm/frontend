@@ -62,15 +62,7 @@ export default function PatientDiagnosis(props) {
     const goHomeButton = () => {
         history.push('/patient/service')
     }
-
-    const [part, setPart] = useState("");
-    const select0 = () => {
-        setPart('정형외과');
-    }
-
-    window.sessionStorage.setItem('part', part);
     
-
     return (
         <Box align="center" onDragStart="false">
             <Box padding={15} width="1150px">
@@ -91,41 +83,41 @@ export default function PatientDiagnosis(props) {
                     <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
-                                <Link to={path.PATIENT_DIAGNOSISROOM} style={{ textDecoration: 'none' }}>
-                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" onClick={select0}>정형외과</Box>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/orthopedics'} style={{ textDecoration: 'none' }}>
+                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">정형외과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/family'} style={{ textDecoration: 'none' }}
                                 ><Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">가정의학과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/rehabilitation'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">재활의학과</Box>
                                 </Link>
                             </Box>
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/otolaryngology'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">이비인후과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/ophthalmology'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">안과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/dentistry'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">치과</Box>
                                 </Link>
                             </Box>
                             <Box display="flex" paddingY={4} width="100%" justifyContent="center">
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/urology'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">비뇨의학과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/geriatrics'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">노년내과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.VIDEO_CALL} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/mentalhealth'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" style={{fontSize: "1.3rem"}}>정신건강의학과</Box>
                                 </Link>
                             </Box>

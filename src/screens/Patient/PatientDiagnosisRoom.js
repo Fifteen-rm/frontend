@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function PatientDiagnosisRoom(props) {
+    const part = props.match.params.part;
+    window.sessionStorage.setItem('part', part);
     const name = window.sessionStorage.getItem('name');
+
     const classes = useStyles();
     const [user, setUser] = useState(null);
     const logout = () => setUser(null);
@@ -74,6 +77,7 @@ export default function PatientDiagnosisRoom(props) {
 
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
+                        {console.log({part})}
                         <Iframe url="/video/WaitingRoom"
                             width="100%"
                             height="600px"

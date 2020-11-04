@@ -72,12 +72,9 @@ export default function PatientRecords(props) {
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
 
-    const handleOpen = () => {
-        setOpen(true)
-    };
-
-    const handleClose = () => {
-        setOpen(false)
+    const handleToggle = () => {
+        console.log(open)
+        setOpen(!open)
     };
 
     const goBackButton = () => {
@@ -109,12 +106,12 @@ export default function PatientRecords(props) {
                         <Box margin={6} display="flex" justifyContent="center" width="100%">
                             <Box display="flex" width="100%">
                                 <Box padding={3} bgcolor="rgb(68, 114, 196)" color="white" width={1 / 10}>날짜</Box>
-                                <Box padding={3} border={1} borderColor="rgb(68, 114, 196)" width={9 / 10} onClick={handleOpen}>내용
-                                    <Modal open={open} onClose={handleClose}>
+                                <Box padding={3} border={1} borderColor="rgb(68, 114, 196)" width={9 / 10} onClick={handleToggle}>내용
+                                    <Modal open={open} onClose={handleToggle}>
                                     <div style={modalStyle} className={classes.paper} align="center">
                                         <h2>20.11.03 진료 내용</h2>
-                                        <p>코로나 씨발 언제 끝나냐</p>
-                                        <Button variant="outlined" color="rgb(68, 114, 196)" onClick={handleClose}>창 닫기</Button>
+                                        <p>약은 사서드세요. 제발...</p>
+                                        <Button variant="outlined" color="rgb(68, 114, 196)" onClick={handleToggle}>창 닫기</Button>
                                     </div>
                                 </Modal>
                                 </Box>

@@ -24,8 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MeetPlace = ({ roomName, token }) => {
-  const part = window.sessionStorage.getItem('part');
   const name = window.sessionStorage.getItem('name');
+  const part = window.sessionStorage.getItem('part');
 
   const [user, setUser] = useState(null);
   const logout = () => setUser(null);
@@ -82,6 +82,7 @@ const MeetPlace = ({ roomName, token }) => {
 
   return (
         <Box className={classes.root} display="flex" justifyContent="center">
+          {part}
           <Box width={8 / 10}>
             {/*Room: {roomName}*/}
             <Box margin={5} border={5} borderColor="#26a69a" style={{ position: 'relative', zIndex: 1 }}>

@@ -17,7 +17,7 @@ class App extends Component {
             <Route path={path.VIDEO_CALL} render={(props) => <WaitingRoom identity={uuidv4()} room="1234"/>}/>
             <Route path={path.PATIENT_DIAGNOSIS} component={PatientDiagnosis} />
             <Route path={path.PATIENT_RECORDS} component={PatientRecords} />
-            <Route path={path.PATIENT_DIAGNOSISROOM} component={PatientDiagnosisRoom} />
+            <Route path={path.PATIENT_DIAGNOSISROOM + '/:part'} component={PatientDiagnosisRoom} />
           </Switch>          
         </Router>
       </div>
