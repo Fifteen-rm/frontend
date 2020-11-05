@@ -77,7 +77,7 @@ export default function PatientLogin(location) {
   window.sessionStorage.setItem('name', name);
 
   const LoginButton = styled(Button)({
-    background: 'rgb(68, 114, 196)',
+    background: '#4472c4',
     color: 'white',
     variant: 'contained',
     fontSize: '1.2rem',
@@ -151,7 +151,7 @@ export default function PatientLogin(location) {
     <Box align="center">
       <Box padding={15} width="1200px">
         <Box className={classes.root} display="flex" justifyContent="center">
-          <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
+          <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>
             환자 로그인
         </Box>
           <Box width={6 / 10}>
@@ -160,7 +160,7 @@ export default function PatientLogin(location) {
         </Box>
 
         <Box className={classes.root} display="flex" justifyContent="center">
-          <Box width={8 / 10} display="flex" border={2} borderColor="rgb(68, 114, 196)">
+          <Box width={8 / 10} display="flex" border={2} borderColor="#4472c4">
             <Box width={5 / 10} paddingLeft={10} paddingY={5}>
               <img src="/images/patientlogin.png" width='80%' />
             </Box>

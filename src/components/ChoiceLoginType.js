@@ -105,7 +105,7 @@ export default function ChoiceLoginType() {
             <Box className={classes.root} padding={10}>
                 <Box padding={5} fontSize='2rem'>원격 진료 서비스에 오신 것을 환영합니다.</Box>
                 <Box display="flex" justifyContent="center">
-                    <Box border={5} borderColor="rgb(68, 114, 196)" margin={3}>
+                    <Box border={5} borderColor="#4472c4" margin={3}>
                         {image_patient.map((image) => (
                             <Link to={path.PATIENT_LOGIN}>
                                 <ButtonBase
@@ -140,7 +140,7 @@ export default function ChoiceLoginType() {
                         ))}
                     </Box>
 
-                    <Box border={5} borderColor="rgb(112, 173, 71)" margin={3}>
+                    <Box border={5} borderColor="#70ad47" margin={3}>
                     {image_doctor.map((image) => (
                         <Link to={path.DOCTOR_LOGIN}>
                             <ButtonBase

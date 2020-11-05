@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom"
-import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis, PatientRecords, PatientDiagnosisRoom } from '..';
+import { PatientLogin, PatientService, WaitingRoom, PatientDiagnosis, PatientRecords, PatientDiagnosisRoom, DoctorDiagnosisRoom } from '..';
 import ChoiceLoginType from 'components/ChoiceLoginType';
 import * as path from 'Utils/path';
 import { v4 as uuidv4 } from 'uuid';
@@ -18,6 +18,8 @@ class App extends Component {
             <Route path={path.PATIENT_DIAGNOSIS} component={PatientDiagnosis} />
             <Route path={path.PATIENT_RECORDS} component={PatientRecords} />
             <Route path={path.PATIENT_DIAGNOSISROOM + '/:part'} component={PatientDiagnosisRoom} />
+
+            <Route path={path.DOCTOR_DIAGNOSISROOM + '/:part'} component={DoctorDiagnosisRoom} />
           </Switch>          
         </Router>
       </div>

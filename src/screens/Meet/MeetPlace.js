@@ -82,13 +82,13 @@ const MeetPlace = ({ roomName, token }) => {
 
   return (
         <Box className={classes.root} display="flex" justifyContent="center">
-          {part}
+          {console.log(part)}
           <Box width={8 / 10}>
             {/*Room: {roomName}*/}
-            <Box margin={5} border={5} borderColor="#26a69a" style={{ position: 'relative', zIndex: 1 }}>
+            <Box margin={5} border={5} borderColor="#000000" style={{ position: 'relative', zIndex: 1 }}>
               <Box className="remote-participants">{remoteParticipants}</Box>
             </Box>
-            <Box width="20%" height="15%" border={5} borderColor="#26a69a" style={{ position: 'relative', zIndex: 2, top: '-200px', left: '525px' }} >
+            <Box width="20%" border={5} borderColor="#ffffff" style={{ position: 'relative', zIndex: 2, top: '-200px', left: '525px' }} >
               <Box className="local-participant">
                 {room ? (
                   <Participant

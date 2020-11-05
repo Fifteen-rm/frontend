@@ -141,14 +141,14 @@ export default function PatientService(props) {
         <Box align="center">
             <Box padding={15} width="1200px">
                 <Box className={classes.root} display="flex" justifyContent="center">
-                    <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>환자 서비스</Box>
+                    <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>환자 서비스</Box>
                     <Box width={6 / 10} className={classes.loginstate}>
                         {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick}>로그아웃</Button>
                     </Box>
                 </Box>
-                <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">
+                <Box width={8 / 10} border={2} borderColor="#4472c4">
                     <Box display="flex" justifyContent="center" padding={3}>
-                        <Box border={5} borderColor="rgb(68, 114, 196)" margin={3}>
+                        <Box border={5} borderColor="#4472c4" margin={3}>
                             {diagnosis.map((image) => (
                                 <Link to={path.PATIENT_DIAGNOSIS}>
                                     <ButtonBase
@@ -184,7 +184,7 @@ export default function PatientService(props) {
                             ))}
                         </Box>
 
-                        <Box border={5} borderColor="rgb(68, 114, 196)" margin={3}>
+                        <Box border={5} borderColor="#4472c4" margin={3}>
                             {record.map((image) => (
                                 <Link to={path.PATIENT_RECORDS}>
                                     <ButtonBase

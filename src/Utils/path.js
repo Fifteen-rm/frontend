@@ -1,4 +1,5 @@
 export const DOCTOR_LOGIN = "/doctor/login"
+export const DOCTOR_DIAGNOSISROOM = "/doctor/room"
 export const PATIENT_LOGIN = "/patient/login"
 export const PATIENT_SERVICE = "/patient/service"
 export const PATIENT_DIAGNOSIS = "/patient/diagnosis"

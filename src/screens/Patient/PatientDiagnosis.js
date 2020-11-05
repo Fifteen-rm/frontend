@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     },
     remotePage: {
         '& > *': {
-            color: "rgb(68, 114, 196)",
+            color: "#4472c4",
             fontSize: '1.2rem',
         },
     },
@@ -67,10 +67,10 @@ export default function PatientDiagnosis(props) {
         <Box align="center" onDragStart="false">
             <Box padding={15} width="1150px">
                 <Box className={classes.root} display="flex" justifyContent="center">
-                    <Box width={2 / 10} bgcolor="rgb(68, 114, 196)" color="white" fontSize="1.5rem" className={classes.box}>
+                    <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>
                         진료과 선택
                 </Box>
-                <Box width={2 / 10} borderColor="rgb(68, 114, 196)" borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
+                <Box width={2 / 10} borderColor="#4472c4" borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
                         <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
                         <Button className={classes.remotePage} onClick={goHomeButton}><HomeIcon />홈으로</Button>
                     </Box>
@@ -80,7 +80,7 @@ export default function PatientDiagnosis(props) {
                 </Box>
 
                 <Box className={classes.root} display="flex" justifyContent="center">
-                    <Box width={8 / 10} border={2} borderColor="rgb(68, 114, 196)">
+                    <Box width={8 / 10} border={2} borderColor="#4472c4">
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
                                 <Link to={path.PATIENT_DIAGNOSISROOM + '/orthopedics'} style={{ textDecoration: 'none' }}>
