@@ -135,7 +135,7 @@ export default function PatientService(props) {
         })
     }
 
-    const name = window.sessionStorage.getItem('name');
+    const patient_name = window.sessionStorage.getItem('patient_name');
 
     return (
         <Box align="center">
@@ -143,7 +143,7 @@ export default function PatientService(props) {
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>환자 서비스</Box>
                     <Box width={6 / 10} className={classes.loginstate}>
-                        {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick}>로그아웃</Button>
+                        {patient_name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick}>로그아웃</Button>
                     </Box>
                 </Box>
                 <Box width={8 / 10} border={2} borderColor="#4472c4">

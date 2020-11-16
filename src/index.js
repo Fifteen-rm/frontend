@@ -22,5 +22,6 @@ export { default as WaitingRoom } from './screens/Meet/WaitingRoom';
 export { default as PatientDiagnosis } from './screens/Patient/PatientDiagnosis';
 export { default as PatientRecords } from './screens/Patient/PatientRecords';
 export { default as PatientDiagnosisRoom } from './screens/Patient/PatientDiagnosisRoom';
-
+export { default as DoctorLogin } from './screens/Doctor/DoctorLogin';
 export { default as DoctorDiagnosisRoom } from './screens/Doctor/DoctorDiagnosisRoom';
+export { default as DoctorWaitingRoom } from './screens/Doctor/DoctorWaitingRoom';

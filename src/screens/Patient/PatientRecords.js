@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
             color: "#4472c4",
             fontSize: '1.2rem',
         },
+        borderColor: "#4472c4",
     },
     paper: {
         position: 'absolute',
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PatientRecords(props) {
-    const name = window.sessionStorage.getItem('name');
+    const patient_name = window.sessionStorage.getItem('patient_name');
     const classes = useStyles();
     const [user, setUser] = useState(null);
     const logout = () => setUser(null);
@@ -97,12 +98,12 @@ export default function PatientRecords(props) {
                     <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>
                         환자 서비스
                 </Box>
-                    <Box width={2 / 10} borderColor="#4472c4" borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
+                    <Box width={2 / 10} borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
                         <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
                         <Button className={classes.remotePage} onClick={goHomeButton}><HomeIcon />홈으로</Button>
                     </Box>
                     <Box width={4 / 10} className={classes.loginstate}>
-                        {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                        {patient_name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
                     </Box>
                 </Box>
 

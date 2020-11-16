@@ -22,6 +22,8 @@ class App extends Component {
             <Route path={path.PATIENT_DIAGNOSISROOM + '/:part'} component={PatientDiagnosisRoom} />
 
             <Route path={path.DOCTOR_DIAGNOSISROOM + '/:part'} component={DoctorDiagnosisRoom} />
+            <Route path={path.DOCTOR_LOGIN} component={DoctorLogin} />
+            <Route path={path.DOCTOR_WAITINGROOM} component={DoctorWaitingRoom} />
           </Switch>          
         </Router>
       </div>

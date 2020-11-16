@@ -69,12 +69,12 @@ export default function PatientLogin(location) {
     textmask: '      -       ',
   });
   const authenticated = user != null;
-  const login = ({ name, idnumber }) => setUser(signIn({ name, idnumber }));
+  const login = ({ patient_name, idnumber }) => setUser(signIn({ patient_name, idnumber }));
 
-  const [name, setName] = useState("")
+  const [patient_name, setPatientName] = useState("")
   const [idnumber, setIDNumber] = useState("")
 
-  window.sessionStorage.setItem('name', name);
+  window.sessionStorage.setItem('patient_name', patient_name);
 
   const LoginButton = styled(Button)({
     background: '#4472c4',
@@ -89,10 +89,10 @@ export default function PatientLogin(location) {
 
   const loginClick = () => {
     try {
-      login({ name, idnumber })
+      login({ patient_name, idnumber })
     } catch (e) {
       alert("일치하는 정보가 없습니다. 다시 입력 해주세요.")
-      setName("")
+      setPatientName("")
       setIDNumber("")
     }
   }
@@ -137,7 +137,7 @@ export default function PatientLogin(location) {
   const handleChange = (event) => {
     setValues({
       ...values,
-      [event.target.name]: event.target.value,
+      [event.target.patient_name]: event.target.value,
     });
   };
 
@@ -168,8 +168,8 @@ export default function PatientLogin(location) {
               <Box padding={1}>
                 <TextField
                   margin="dense"
-                  value={name}
-                  onChange={({ target: { value } }) => setName(value)}
+                  value={patient_name}
+                  onChange={({ target: { value } }) => setPatientName(value)}
                   type="text"
                   label="이름"
                 />

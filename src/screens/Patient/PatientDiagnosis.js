@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
             color: "#4472c4",
             fontSize: '1.2rem',
         },
+        borderColor: "#4472c4",
     },
     text: {
         textAlign: 'center',
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function PatientDiagnosis(props) {
-    const name = window.sessionStorage.getItem('name');
+    const patient_name = window.sessionStorage.getItem('patient_name');
 
     const classes = useStyles();
     const [user, setUser] = useState(null);
@@ -70,12 +71,12 @@ export default function PatientDiagnosis(props) {
                     <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>
                         진료과 선택
                 </Box>
-                <Box width={2 / 10} borderColor="#4472c4" borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
+                <Box width={2 / 10} borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
                         <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
                         <Button className={classes.remotePage} onClick={goHomeButton}><HomeIcon />홈으로</Button>
                     </Box>
                     <Box width={4 / 10} className={classes.loginstate}>
-                        {name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
+                        {patient_name}님 로그인됨　| <Button className={classes.logoutbutton} onClick={logoutClick} color="blue">로그아웃</Button>
                     </Box>
                 </Box>
 
@@ -83,41 +84,41 @@ export default function PatientDiagnosis(props) {
                     <Box width={8 / 10} border={2} borderColor="#4472c4">
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/orthopedics'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/정형외과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">정형외과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/family'} style={{ textDecoration: 'none' }}
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/가정의학과'} style={{ textDecoration: 'none' }}
                                 ><Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">가정의학과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/rehabilitation'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/재활의학과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">재활의학과</Box>
                                 </Link>
                             </Box>
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/otolaryngology'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/이비인후과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">이비인후과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/ophthalmology'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/안과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">안과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/dentistry'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/치과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">치과</Box>
                                 </Link>
                             </Box>
                             <Box display="flex" paddingY={4} width="100%" justifyContent="center">
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/urology'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/비뇨의학과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">비뇨의학과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/geriatrics'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/노년내과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">노년내과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
-                                <Link to={path.PATIENT_DIAGNOSISROOM + '/mentalhealth'} style={{ textDecoration: 'none' }}>
+                                <Link to={path.PATIENT_DIAGNOSISROOM + '/정신건강의학과'} style={{ textDecoration: 'none' }}>
                                     <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" style={{fontSize: "1.3rem"}}>정신건강의학과</Box>
                                 </Link>
                             </Box>
