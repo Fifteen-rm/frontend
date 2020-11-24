@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import { useHistory } from "react-router-dom";
-import Iframe from 'react-iframe';
-
+import { useHistory, Link } from "react-router-dom";
+import axios from 'axios';
+import * as path from 'Utils/path';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import HomeIcon from '@material-ui/icons/Home';
+
 
 const useStyles = makeStyles((theme) => ({
     box: {
@@ -57,8 +57,15 @@ export default function DoctorWaitingRoom() {
     }
 
     const goHomeButton = () => {
-        history.push('/patient/service')
+        history.push('/doctor/waiting')
     }
+
+    const [results, setResults] = useState([]);
+    useEffect(() => {
+        axios
+            .get(`${path.SERVER}/treatment/Waitingroom?Major=흉부외과`)
+            .then((data) => setResults(data));
+    }, []);
 
     return (
         <Box align="center">
@@ -78,7 +85,18 @@ export default function DoctorWaitingRoom() {
 
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={8 / 10} display="flex" border={2} borderColor="#70ad47">
-                    <Box margin={6} display="flex" justifyContent="center" width="100%">
+                        <Box margin={6} display="flex" justifyContent="center" width="100%">
+                            <Box width="100%">
+                                {results.length !== 0 ?
+                                    results.data.slice(0).reverse().map((result) => (
+                                        <Box display="flex" width="100%">
+                                            <Box padding={3} fontSize="1.2rem" border={1} borderColor="#70ad47" width={9 / 10}>{result.patient.name}님</Box>
+                                            <Link to={path.DOCTOR_DIAGNOSISROOM + '/' + doctor_part} style={{ textDecoration: 'none' }}>
+                                                <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#70ad47" color="white" width={1 / 10}>입장</Box>
+                                            </Link>
+                                        </Box>
+                                    )) : console.log('hi')}
+                            </Box>
                         </Box>
                     </Box>
                 </Box>

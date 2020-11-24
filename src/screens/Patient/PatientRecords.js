@@ -3,24 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-
 import axios from 'axios';
-import Modal from '@material-ui/core/Modal';
-
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import HomeIcon from '@material-ui/icons/Home';
-
-
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-
-    return {
-        top: `${top}%`,
-        left: `${left}%`,
-        transform: `translate(-${top}%, -${left}%)`,
-    };
-}
+import * as path from 'Utils/path';
 
 const useStyles = makeStyles((theme) => ({
     box: {
@@ -69,13 +55,6 @@ export default function PatientRecords(props) {
         history.push('/')
     }
 
-    const [modalStyle] = React.useState(getModalStyle);
-    const [open, setOpen] = React.useState(false);
-
-    const handleToggle = () => {
-        setOpen(!open)
-    };
-
     const goBackButton = () => {
         history.goBack()
     }
@@ -87,7 +66,7 @@ export default function PatientRecords(props) {
     const [results, setResults] = useState([]);
     useEffect(() => {
         axios
-            .get(`https://jsonplaceholder.typicode.com/users`)  // 진료 내역 데이터 위치
+            .get(`${path.SERVER}/patient/description/all`)  // 진료 내역 데이터 위치
             .then((data) => setResults(data));
     }, []);
 
@@ -114,16 +93,8 @@ export default function PatientRecords(props) {
                                 {results.length !== 0 ?
                                     results.data.slice(0).reverse().map((result) => (
                                         <Box display="flex" width="100%">
-                                            <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#4472c4" color="white" width={1 / 10}>{result.id}</Box>
-                                            <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={9 / 10} onClick={handleToggle}>{result.email}</Box>
-                                            {/*result.id 에는 날짜 데이터(예: 20/11/05), result.email에는 내용 데이터 짤라서 넣고 모달 안에 result.email에 전체 내용 데이터 넣을 겁니다*/}
-                                            <Modal open={open}>
-                                                <div style={modalStyle} className={classes.paper} align="center">
-                                                    <h1>{result.id}</h1>
-                                                    <h2>{result.email}</h2>
-                                                    <Button variant="outlined" color="#4472c4" onClick={handleToggle}>창 닫기</Button>
-                                                </div>
-                                            </Modal>
+                                            <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#4472c4" color="white" width={2 / 12}>{(result.updated_at).substr(0, 10)}<br></br>{(result.updated_at).substr(11, 8)}</Box>
+                                    <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={10 / 12}>{result.doctor} 선생님 진료<br></br>{result.doctor_say}</Box>
                                         </Box>
                                     )) : console.log('hi')}
                             </Box>
@@ -134,5 +105,3 @@ export default function PatientRecords(props) {
         </Box>
     )
 }
-
-{/*  */}

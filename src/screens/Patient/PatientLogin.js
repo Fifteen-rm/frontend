@@ -74,6 +74,7 @@ export default function PatientLogin(location) {
   const [patient_name, setPatientName] = useState("")
   const [idnumber, setIDNumber] = useState("")
 
+  const token = null;
   window.sessionStorage.setItem('patient_name', patient_name);
 
   const LoginButton = styled(Button)({
@@ -111,8 +112,8 @@ export default function PatientLogin(location) {
   const kakaoLoginClick = () => {
     let kakao_url = process.env.NODE_ENV === 'prod'
       ? process.env.HOST_URL
-      : "http://127.0.0.1:10637/authenticate/kakao/login/"
-    window.open(kakao_url, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
+      : "https://vjbw52tg5f.execute-api.us-east-2.amazonaws.com/dev/authenticate/kakao/login"
+    var popup = window.open(kakao_url, '', 'width=400,height=600,location=no,status=no,scrollbars=yes');
   };
   const responseKaKao = (res) => {
     console.log(res)

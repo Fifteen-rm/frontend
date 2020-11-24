@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as path from 'Utils/path';
-
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button'
@@ -63,6 +63,18 @@ export default function PatientDiagnosis(props) {
     const goHomeButton = () => {
         history.push('/patient/service')
     }
+
+    const sendPart = () => {
+        axios({
+            method: 'post',
+            url: `${path.SERVER}/treatment/waitingroom?Major=흉부외과`,
+            data: {
+                patient: patient_name,
+                major: "흉부외과"
+            }
+        })
+        history.push('/doctor/waiting')
+    }
     
     return (
         <Box align="center" onDragStart="false">
@@ -85,7 +97,7 @@ export default function PatientDiagnosis(props) {
                         <Box justifyContent="center">
                             <Box display="flex" paddingTop={4} width="100%" justifyContent="center">
                                 <Link to={path.PATIENT_DIAGNOSISROOM + '/정형외과'} style={{ textDecoration: 'none' }}>
-                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black">정형외과</Box>
+                                    <Box className={classes.text} padding={3} width={150} height={100} border={1} borderColor='rgb(68, 114, 195)' color="black" onClick={sendPart}>정형외과</Box>
                                 </Link>
                                 <Box marginX={2}></Box>
                                 <Link to={path.PATIENT_DIAGNOSISROOM + '/가정의학과'} style={{ textDecoration: 'none' }}

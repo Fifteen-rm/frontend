@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { useHistory } from "react-router-dom";
 import Iframe from 'react-iframe';
-
+import axios from 'axios';
+import * as path from 'Utils/path';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -57,7 +58,18 @@ export default function DoctorDiagnosisRoom(props) {
     }
 
     const goHomeButton = () => {
-        history.push('/patient/service')
+        history.push('/doctor/waiting')
+    }
+
+    const sendRecord = () => {
+        axios({
+            method: 'post',
+            url: `${path.SERVER}/patient/description/all`,
+            data: {
+                doctor_say: "멍멍"
+            }
+        })
+        history.push('/doctor/waiting')
     }
 
     return (
@@ -87,11 +99,12 @@ export default function DoctorDiagnosisRoom(props) {
                     <Box width={4 / 15} borderTop={2} borderRight={2} borderBottom={2} style={{ borderColor: "#70ad47" }}>
                         <br></br>
                         <TextareaAutosize
+                            className={classes.records}
                             pd={5}
                             rowsMin={33}
                             cols={33}
                         />
-                        <Button variant="outlined" color="#70ad47">진료 내용 보내고 종료하기</Button>
+                        <Button variant="outlined" color="#70ad47" onClick={sendRecord}>진료 내용 보내고 종료하기</Button>
                     </Box>
                 </Box>
             </Box>

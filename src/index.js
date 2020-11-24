@@ -14,8 +14,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-export { default as DoctorLogin} from './screens/Doctor/DoctorLogin';
-export { default as DoctorWaitingRoom} from './screens/Doctor/DoctorWaitingRoom';
 export { default as PatientLogin } from './screens/Patient/PatientLogin';
 export { default as PatientService } from './screens/Patient/PatientService';
 export { default as WaitingRoom } from './screens/Meet/WaitingRoom';
