@@ -94,7 +94,7 @@ export default function PatientRecords(props) {
                                     results.data.map((result) => (
                                         <Box display="flex" width="100%">
                                             <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#4472c4" color="white" width={2 / 12}>{(result.updated_at).substr(0, 10)}<br></br>{(result.updated_at).substr(11, 8)}</Box>
-                                    <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={10 / 12}>{result.patient_say} {result.doctor}님 진료<br></br>{result.doctor_say}</Box>
+                                    <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={10 / 12}>{result.major} {result.doctor}님 진료<br></br>{result.doctor_say}</Box>
                                         </Box>
                                     )) : ''}
                             </Box>
