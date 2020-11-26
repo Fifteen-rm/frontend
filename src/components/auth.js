@@ -3,7 +3,8 @@ const users = [
     { patient_name: "test", idnumber: "000000-0000000"},
 ]
 const doctors = [
-    { doctor_part: "정형외과", doctor_name: "홍길동", password: "0000" },
+    { doctor_part: "정형외과", doctor_name: "홍길동", password: "123456" },
+    { doctor_part: "가정의학과", doctor_name: "김덕배", password: "123456" },
 ]
 
 export function signIn({ patient_name, idnumber }) {
@@ -13,9 +14,9 @@ export function signIn({ patient_name, idnumber }) {
     if(user === undefined) throw new Error()
         return user
 }
-export function dsignIn({ part, doctor_name, password }) {
+export function dsignIn({ doctor_part, doctor_name, password }) {
     const doctor = doctors.find(
-        (doctor) => doctor.part === part && doctor.doctor_name === doctor_name && doctor.password === password
+        (doctor) => doctor.doctor_part === doctor_part && doctor.doctor_name === doctor_name && doctor.password === password
     )
     if(doctor === undefined) throw new Error()
         return doctor

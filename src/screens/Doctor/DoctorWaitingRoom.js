@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 export default function DoctorWaitingRoom() {
     const doctor_name = window.sessionStorage.getItem('doctor_name');
     const doctor_part = window.sessionStorage.getItem('doctor_part');
+    const patient_name = null;
 
     const classes = useStyles();
     const [doctor, setDoctor] = useState(null);
@@ -63,7 +64,7 @@ export default function DoctorWaitingRoom() {
     const [results, setResults] = useState([]);
     useEffect(() => {
         axios
-            .get(`${path.SERVER}/treatment/Waitingroom?Major=흉부외과`)
+            .get(`${path.SERVER}/treatment/waitingroom?Major=` + doctor_part)
             .then((data) => setResults(data));
     }, []);
 
@@ -72,7 +73,7 @@ export default function DoctorWaitingRoom() {
             <Box padding={15} width="1200px" alignContent="center">
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={2 / 10} bgcolor="#70ad47" color="white" fontSize="1.5rem" className={classes.box}>
-                        진료실
+                        진료 대기실
                 </Box>
                     <Box width={2 / 10} borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
                         <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
@@ -89,13 +90,13 @@ export default function DoctorWaitingRoom() {
                             <Box width="100%">
                                 {results.length !== 0 ?
                                     results.data.slice(0).reverse().map((result) => (
-                                        <Box display="flex" width="100%">
-                                            <Box padding={3} fontSize="1.2rem" border={1} borderColor="#70ad47" width={9 / 10}>{result.patient.name}님</Box>
-                                            <Link to={path.DOCTOR_DIAGNOSISROOM + '/' + doctor_part} style={{ textDecoration: 'none' }}>
-                                                <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#70ad47" color="white" width={1 / 10}>입장</Box>
+                                        <Box display="flex" width="100%" onClick={() => {window.sessionStorage.setItem('patient_name', result.patient.name)}}>
+                                            <Box padding={3} fontSize="1.2rem" border={1} borderColor="#70ad47" width={8 / 10}>{result.patient.name}님</Box>
+                                            <Link to={path.DOCTOR_DIAGNOSISROOM + '/' + doctor_part} style={{ textDecoration: 'none', width: '2 / 10' }}>
+                                                <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#70ad47" color="white" width='100%'>접속</Box>
                                             </Link>
                                         </Box>
-                                    )) : console.log('hi')}
+                                    )) : ''}
                             </Box>
                         </Box>
                     </Box>

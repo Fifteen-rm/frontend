@@ -172,7 +172,7 @@ export default function PatientLogin(location) {
                   value={patient_name}
                   onChange={({ target: { value } }) => setPatientName(value)}
                   type="text"
-                  label="이름"
+                  label="성명"
                 />
               </Box>
               <Box padding={1}>

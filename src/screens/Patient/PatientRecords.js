@@ -75,7 +75,7 @@ export default function PatientRecords(props) {
             <Box padding={15} width="1200px">
                 <Box className={classes.root} display="flex" justifyContent="center">
                     <Box width={2 / 10} bgcolor="#4472c4" color="white" fontSize="1.5rem" className={classes.box}>
-                        환자 서비스
+                        진료 내역
                 </Box>
                     <Box width={2 / 10} borderTop={2} borderRight={2} fontSize="1.5rem" className={classes.remotePage}>
                         <Button className={classes.remotePage} onClick={goBackButton}><ArrowBackIcon />뒤로가기</Button>
@@ -91,12 +91,12 @@ export default function PatientRecords(props) {
                         <Box margin={6} display="flex" justifyContent="center" width="100%">
                             <Box width="100%">
                                 {results.length !== 0 ?
-                                    results.data.slice(0).reverse().map((result) => (
+                                    results.data.map((result) => (
                                         <Box display="flex" width="100%">
                                             <Box padding={3} fontSize="1.2rem" borderBottom={1} borderColor="#ffffff" bgcolor="#4472c4" color="white" width={2 / 12}>{(result.updated_at).substr(0, 10)}<br></br>{(result.updated_at).substr(11, 8)}</Box>
-                                    <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={10 / 12}>{result.doctor} 선생님 진료<br></br>{result.doctor_say}</Box>
+                                    <Box padding={3} fontSize="1.2rem" border={1} borderColor="#4472c4" width={10 / 12}>{result.patient_say} {result.doctor}님 진료<br></br>{result.doctor_say}</Box>
                                         </Box>
-                                    )) : console.log('hi')}
+                                    )) : ''}
                             </Box>
                         </Box>
                     </Box>

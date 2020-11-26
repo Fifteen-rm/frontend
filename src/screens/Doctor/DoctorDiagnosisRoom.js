@@ -35,15 +35,37 @@ const useStyles = makeStyles((theme) => ({
         },
         borderColor: "#70ad47",
     },
+    textArea: {
+        margin: "10px",
+        resize: "none",
+    },
+    header: {
+        color: "#FFFFFF",
+        backgroundColor: "#70ad47",
+        fontSize: "1.5rem",
+        fontWeight: "400",
+    },
+    sendButton: {
+        color: "#FFFFFF",
+        backgroundColor: "#70ad47",
+        fontSize: "1.2rem",
+        fontWeight: "500",
+        paddingTop: "15px",
+        paddingBottom: "15px",
+        paddingLeft: "40px",
+        paddingRight: "40px",
+    },
 }));
 
 
 export default function DoctorDiagnosisRoom(props) {
     const doctor_name = window.sessionStorage.getItem('doctor_name');
     const doctor_part = window.sessionStorage.getItem('doctor_part');
+    const patient_name = window.sessionStorage.getItem('patient_name');
 
     const classes = useStyles();
     const [doctor, setDoctor] = useState(null);
+    const [patientInfo, setPatientInfo] = useState("")
     const logout = () => setDoctor(null);
 
     const history = useHistory();
@@ -64,12 +86,19 @@ export default function DoctorDiagnosisRoom(props) {
     const sendRecord = () => {
         axios({
             method: 'post',
-            url: `${path.SERVER}/patient/description/all`,
+            url: `${path.SERVER}/doctor/description/`,
+            headers: {
+                Authorization: "backdoor"
+            },
             data: {
-                doctor_say: "멍멍"
+                patient: patient_name,
+                doctor: doctor_name,
+                patient_say: doctor_part,
+                doctor_say: patientInfo,
             }
         })
-        history.push('/doctor/waiting')
+        //axios.delete(`${path.SERVER}/treatment/waitingroom?Patient=` + doctor_part);
+        history.goBack()
     }
 
     return (
@@ -94,17 +123,20 @@ export default function DoctorDiagnosisRoom(props) {
                             width="100%"
                             height="600px"
                             frameBorder="0"
+                            scrolling="no"
                         />
                     </Box>
                     <Box width={4 / 15} borderTop={2} borderRight={2} borderBottom={2} style={{ borderColor: "#70ad47" }}>
-                        <br></br>
+                        <Box className={classes.header}>진료 내용 작성</Box>
                         <TextareaAutosize
-                            className={classes.records}
+                            value={patientInfo}
+                            onChange={({ target: { value } }) => setPatientInfo(value)}
+                            className={classes.textArea}
                             pd={5}
-                            rowsMin={33}
+                            rowsMin={30}
                             cols={33}
                         />
-                        <Button variant="outlined" color="#70ad47" onClick={sendRecord}>진료 내용 보내고 종료하기</Button>
+                        <Box><span className={classes.sendButton} onClick={sendRecord}>진료 내용 보내기</span></Box>
                     </Box>
                 </Box>
             </Box>

@@ -76,13 +76,13 @@ export default function PatientDiagnosisRoom(props) {
                     </Box>
                 </Box>
 
-                <Box className={classes.root} display="flex" justifyContent="center">
+                <Box display="flex" justifyContent="center">
                     <Box width={8 / 10} display="flex" border={2} borderColor="#4472c4">
-                        {console.log({part})}
                         <Iframe url="/video/WaitingRoom"
                             width="100%"
                             height="600px"
                             frameBorder="0"
+                            scrolling="no"
                         />
                     </Box>
                 </Box>
