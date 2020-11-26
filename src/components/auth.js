@@ -1,6 +1,7 @@
 const users = [
     { patient_name: "손흥민", idnumber: "000000-0000000" },
     { patient_name: "박찬호", idnumber: "000000-0000000"},
+    { patient_name: "test", idnumber: "000000-0000000"},
 ]
 const doctors = [
     { doctor_part: "정형외과", doctor_name: "엄중식", password: "123456" },
