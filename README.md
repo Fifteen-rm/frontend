@@ -7,3 +7,6 @@ npm install
 
 ## 실행
 npm run dev
+
+## 시연 영상
+https://youtu.be/x6xgO_QrwnY
